@@ -55,7 +55,7 @@ terraform {
 }
 
 provider "google" {
-  project = "project-id-1234"
+  project = "project-id-12345"
   # setup your optional gcp credentials here
   # credentials = "creds-filename.json"
 }
@@ -67,9 +67,8 @@ provider "valtix" {
 module "gcp_setup" {
   source                    = "github.com/valtix-security/terraform-gcp-setup"
   prefix                    = "someprefix"
-  project_id                = "project-id-1234"
-  valtix_cloud_account_name = "project-id-1234"
-  valtix_api_key_file       = "valtix_api.json"
+  project_id                = "project-id-12345"
+  valtix_cloud_account_name = "project-id-12345"
 }
 ```
 
