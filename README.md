@@ -35,7 +35,7 @@ terraform apply -var-file values
 * `project_id` - Project Id that was provided in the variables
 * `private_key` - Not displayed. The content is the file contents that you would have otherwise downloaded as part of the Service account's key
 
-## Using inside another module or a root module
+## Using as a module (non-root module)
 
 Create a tf file with the following content
 
