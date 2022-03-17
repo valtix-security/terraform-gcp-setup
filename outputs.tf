@@ -14,7 +14,12 @@ output "gateway_account" {
   value = google_service_account.gateway_account.email
 }
 
-output "private_key" {
+output "private_key_file_content" {
+  description = "Content of the private key file of the Controller Service Account"
   value     = base64decode(google_service_account_key.controller_account_key.private_key)
   sensitive = true
+}
+
+output "valtix_cloud_account_name" {
+  value = var.valtix_cloud_account_name
 }

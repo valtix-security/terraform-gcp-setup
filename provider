@@ -1,0 +1,8 @@
+provider "google" {
+  project     = var.project_id
+  credentials = pathexpand(var.gcp_credentials_file)
+}
+
+provider "valtix" {
+  api_key_file = file(var.valtix_api_key_file)
+}
