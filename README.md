@@ -20,7 +20,7 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
 
 ## Using in a root module
 
-```
+```hcl
 terraform {
   required_providers {
     valtix = {
