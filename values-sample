@@ -1,0 +1,5 @@
+prefix = "valtix"
+project_id = "project-id-12345"
+gcp_credentials_file = "~/.config/gcloud/application_default_credentials.json"
+valtix_api_key_file = "~/Downloads/valtix_api_key.json"
+valtix_cloud_account_name = "project-id-12345"
