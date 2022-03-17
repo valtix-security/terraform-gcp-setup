@@ -18,6 +18,7 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
 git clone https://github.com/valtix-security/terraform-gcp-setup.git
 cd terraform-gcp-setup
 mv provider provider.tf
+cp values.sample values
 ```
 
 Edit `values` file with the appropriate values for the variables
