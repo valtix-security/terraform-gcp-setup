@@ -13,6 +13,14 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
 * `valtix_api_key_file` - (Required) Valtix API Key file Name downloaded in the above step
 * `valtix_cloud_account_name` - (Required) Name to use to represent the GCP Project on the Valtix Controller's Dashboard
 
+## Outputs
+
+* `client_email` - Service Account used by the Valtix Controller to manage your GCP Account
+* `controller_account` - Same value as `client_email`
+* `gateway_account` - Service Account used by the Valtix Gateways
+* `project_id` - Project Id that was provided in the variables
+* `private_key` - Not displayed. The content is the file contents that you would have otherwise downloaded as part of the Service account's key
+
 ## Running as root module
 ```
 git clone https://github.com/valtix-security/terraform-gcp-setup.git
@@ -27,14 +35,6 @@ Edit `values` file with the appropriate values for the variables
 terraform init
 terraform apply -var-file values
 ```
-
-## Outputs
-
-* `client_email` - Service Account used by the Valtix Controller to manage your GCP Account
-* `controller_account` - Same value as `client_email`
-* `gateway_account` - Service Account used by the Valtix Gateways
-* `project_id` - Project Id that was provided in the variables
-* `private_key` - Not displayed. The content is the file contents that you would have otherwise downloaded as part of the Service account's key
 
 ## Using as a module (non-root module)
 
