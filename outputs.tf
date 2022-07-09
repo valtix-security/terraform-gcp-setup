@@ -19,7 +19,3 @@ output "private_key_file_content" {
   value     = base64decode(google_service_account_key.controller_account_key.private_key)
   sensitive = true
 }
-
-output "valtix_cloud_account_name" {
-  value = var.valtix_cloud_account_name
-}
