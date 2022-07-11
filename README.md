@@ -17,7 +17,7 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
 * `controller_account` - Same value as `client_email`
 * `gateway_account` - Service Account used by the Valtix Gateways
 * `project_id` - Project Id that was provided in the variables
-* `private_key_file_content` - This is the private key for the Service Account created for Valtix Controller. The content is the file contents that you would have otherwise downloaded as part of the Service account's key(Sensitive, use `terraform output -json | jq -r .private_key_file_content.value` to see the value)
+* `private_key_file_content` - This is the private key for the controller_account (or client_email). This is required during onboarding of the GCP account to the Valtix Controller. The content is sensitive and can be displayed using `terraform output -json | jq -r .private_key_file_content.value`. If you are using the Valtix Dashboard, then copy/paste the contents of private_key. If you are using terraform to onboard this account from another module, then save the value into a file and use this file as the argument for `gcp_credentials_file` in the `valtix_cloud_account` resource. If you are running this from a module, then you can use the output directly
 
 ## Running as root module
 ```
@@ -43,6 +43,12 @@ terraform {
   required_providers {
     valtix = {
       source = "valtix-security/valtix"
+    }
+    google = {
+      source = "hashicorp/google"
+    }
+    time = {
+      source = "hashicorp/time"
     }
   }
 }
