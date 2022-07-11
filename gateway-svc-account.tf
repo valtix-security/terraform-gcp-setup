@@ -18,3 +18,11 @@ resource "google_project_iam_binding" "logwriter" {
     "serviceAccount:${google_service_account.gateway_account.email}",
   ]
 }
+
+resource "time_sleep" "wait_for_controller_account" {
+  depends_on = [
+    google_service_account_key.controller_account_key
+  ]
+  create_duration = "15s"
+}
+

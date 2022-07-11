@@ -10,8 +10,6 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
 * `prefix` - (Required) Prefix added to the service accounts (and any other resources) created
 * `project_id` - (Required) GCP Project Id where the Service Accounts (and eventually Valtix Gateways) are created
 * `gcp_credentials_file` - (Optional) GCP Credentials file (Defaults to $HOME/.config/gcloud/application_default_credentials.json)
-* `valtix_api_key_file` - (Required) Valtix API Key file Name downloaded in the above step
-* `valtix_cloud_account_name` - (Required) Name to use to represent the GCP Project on the Valtix Controller's Dashboard
 
 ## Outputs
 
@@ -19,7 +17,7 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
 * `controller_account` - Same value as `client_email`
 * `gateway_account` - Service Account used by the Valtix Gateways
 * `project_id` - Project Id that was provided in the variables
-* `private_key` - Not displayed. The content is the file contents that you would have otherwise downloaded as part of the Service account's key
+* `private_key_file_content` - This is the private key for the controller_account (or client_email). This is required during onboarding of the GCP account to the Valtix Controller. The content is sensitive and can be displayed using `terraform output -json | jq -r .private_key_file_content.value`. If you are using the Valtix Dashboard, then copy/paste the contents of private_key. If you are using terraform to onboard this account from another module, then save the value into a file and use this file as the argument for `gcp_credentials_file` in the `valtix_cloud_account` resource. If you are running this from a module, then you can use the output directly
 
 ## Running as root module
 ```
@@ -69,7 +67,6 @@ module "gcp_setup" {
   source                    = "github.com/valtix-security/terraform-gcp-setup"
   prefix                    = "someprefix"
   project_id                = "project-id-12345"
-  valtix_cloud_account_name = "project-id-12345"
 }
 ```
 
