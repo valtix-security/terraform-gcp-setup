@@ -20,6 +20,30 @@ resource "google_project_iam_binding" "service_account_user" {
   ]
 }
 
+resource "google_project_iam_binding" "pub_sub_admin" {
+  project = var.project_id
+  role    = "roles/pubsub.admin"
+  members = [
+    "serviceAccount:${google_service_account.controller_account.email}",
+  ]
+}
+
+resource "google_project_iam_binding" "logging_admin" {
+  project = var.project_id
+  role    = "roles/logging.admin"
+  members = [
+    "serviceAccount:${google_service_account.controller_account.email}",
+  ]
+}
+
+resource "google_project_iam_binding" "secretmanager" {
+  project = var.project_id
+  role    = "roles/secretmanager.secretAccessor"
+  members = [
+    "serviceAccount:${google_service_account.controller_account.email}",
+  ]
+}
+
 resource "google_service_account_key" "controller_account_key" {
   service_account_id = google_service_account.controller_account.id
   public_key_type    = "TYPE_X509_PEM_FILE"
