@@ -41,14 +41,8 @@ Create a tf file with the following content
 ```hcl
 terraform {
   required_providers {
-    valtix = {
-      source = "valtix-security/valtix"
-    }
     google = {
       source = "hashicorp/google"
-    }
-    time = {
-      source = "hashicorp/time"
     }
   }
 }
@@ -57,10 +51,6 @@ provider "google" {
   project = "project-id-12345"
   # setup your optional gcp credentials here
   # credentials = "creds-filename.json"
-}
-
-provider "valtix" {
-  api_key_file = file("valtix_api_key.json")
 }
 
 module "gcp_setup" {

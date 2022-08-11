@@ -12,11 +12,6 @@ variable "gcp_credentials_file" {
   default     = "~/.config/gcloud/application_default_credentials.json"
 }
 
-variable "valtix_api_key_file" {
-  description = "Valtix API key file name"
-  default     = ""
-}
-
 variable "disable_api_services_on_destroy" {
   description = "Disable gcloud apiservices on terraform destroy"
   default     = false
