@@ -3,7 +3,14 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
 
 # Requirements
 1. Enable terraform to access your GCP account. Check here for the options https://registry.terraform.io/providers/hashicorp/google/latest/docs (Quick Summary: `gcloud auth application-default login` or if you intend to use a Service Account to run terraform, then create a key for the service account and provided the downloaded file as the value of the `gcp_credentials_file` )
-1. Login to the Valtix Dashboard and generate an API Key using the instructions provided here: https://registry.terraform.io/providers/valtix-security/valtix/latest/docs
+1. Permissions/Roles required for the user that runs this terraform:
+    * Logging Admin
+    * Pub/Sub Admin
+    * Security Admin
+    * Service Account Admin
+    * Service Account Key Admin
+    * Service Usage Admin
+    * Storage Admin
 
 ## Variables
 
