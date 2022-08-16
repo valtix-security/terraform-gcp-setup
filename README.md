@@ -11,6 +11,8 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
     * Service Account Key Admin
     * Service Usage Admin
     * Storage Admin
+    * Compute Admin
+    * DNS Administrator
 
 ## Variables
 
