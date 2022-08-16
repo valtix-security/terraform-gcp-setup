@@ -10,6 +10,8 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
 * `prefix` - (Required) Prefix added to the service accounts (and any other resources) created
 * `project_id` - (Required) GCP Project Id where the Service Accounts (and eventually Valtix Gateways) are created
 * `gcp_credentials_file` - (Optional) GCP Credentials file (Defaults to $HOME/.config/gcloud/application_default_credentials.json)
+* `bucket_location` - (Optional) Create a storage bucket in the given location. This can be used later on for enabling VPC and DNS Flow logs. Default empty (no storage bucket is created)
+* `valtix_webhook` - (Optional) Valtix webhook - Used to get real time inventory updates. This creates a pubsub topic, pubsub subscription, logsink. Default empty (does not create these integrations)
 
 ## Outputs
 
@@ -18,6 +20,7 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
 * `gateway_account` - Service Account used by the Valtix Gateways
 * `project_id` - Project Id that was provided in the variables
 * `private_key_file_content` - This is the private key for the controller_account (or client_email). This is required during onboarding of the GCP account to the Valtix Controller. The content is sensitive and can be displayed using `terraform output -json | jq -r .private_key_file_content.value`. If you are using the Valtix Dashboard, then copy/paste the contents of private_key. If you are using terraform to onboard this account from another module, then save the value into a file and use this file as the argument for `gcp_credentials_file` in the `valtix_cloud_account` resource. If you are running this from a module, then you can use the output directly
+* `storage_bucket` - If bucket location is provided, create a storage bucket and show the name
 
 ## Running as root module
 ```

@@ -16,6 +16,10 @@ output "gateway_account" {
 
 output "private_key_file_content" {
   description = "Content of the private key file of the Controller Service Account"
-  value     = base64decode(google_service_account_key.controller_account_key.private_key)
-  sensitive = true
+  value       = base64decode(google_service_account_key.controller_account_key.private_key)
+  sensitive   = true
+}
+
+output "storage_bucket" {
+  value = var.bucket_location == "" ? "" : google_storage_bucket.discovery[0].name
 }

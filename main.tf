@@ -6,3 +6,6 @@ terraform {
     }
   }
 }
+
+data "google_project" "project" {
+}

@@ -16,3 +16,13 @@ variable "disable_api_services_on_destroy" {
   description = "Disable gcloud apiservices on terraform destroy"
   default     = false
 }
+
+variable "bucket_location" {
+  description = "Storage bucket location, this is used (later on) to enable VPC and DNS flow logs. If the value is empty, the bucket will not be created"
+  default     = ""
+}
+
+variable "valtix_webhook" {
+  description = "Valtix webhook for real time inventory updates"
+  default     = ""
+}
