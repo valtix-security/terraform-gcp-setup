@@ -9,6 +9,9 @@ resource "google_pubsub_subscription" "invsub" {
   topic = google_pubsub_topic.invtopic[count.index].name
   push_config {
     push_endpoint = var.valtix_webhook
+    oidc_token {
+      service_account_email = google_service_account.controller_account.email
+    }
   }
 }
 
