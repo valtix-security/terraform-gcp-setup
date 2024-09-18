@@ -13,7 +13,8 @@ resource "google_project_iam_member" "controller_role" {
     "roles/iam.serviceAccountUser",
     "roles/pubsub.admin",
     "roles/logging.admin",
-    "roles/storage.admin"
+    "roles/storage.admin",
+    "roles/iam.serviceAccountTokenCreator"
   ])
   project = var.project_id
   role    = each.key
