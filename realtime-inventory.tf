@@ -31,8 +31,10 @@ resource "google_pubsub_topic_iam_member" "member" {
 }
 
 resource "google_storage_bucket" "discovery" {
-  count         = var.bucket_location == "" ? 0 : 1
-  name          = "${var.prefix}-log-bucket"
-  force_destroy = true
-  location      = var.bucket_location
+  count                    = var.bucket_location == "" ? 0 : 1
+  name                     = "${var.prefix}-log-bucket"
+  force_destroy            = true
+  location                 = var.bucket_location
+  public_access_prevention = "enforced"
 }
+
