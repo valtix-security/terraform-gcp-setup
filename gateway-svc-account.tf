@@ -9,7 +9,8 @@ resource "google_service_account" "gateway_account" {
 resource "google_project_iam_member" "gw_role" {
   for_each = toset([
     "roles/secretmanager.secretAccessor",
-    "roles/logging.logWriter"
+    "roles/logging.logWriter",
+    "roles/storage.objectCreator"
   ])
   project = var.project_id
   role    = each.key
