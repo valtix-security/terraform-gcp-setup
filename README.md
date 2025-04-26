@@ -1,10 +1,10 @@
 # terraform-gcp-setup
-Create Service Accounts, enable API Services and prepare your GCP account to enable Valtix Controller access your account and deploy Valtix Security Gateways. The repo provides a full working example. You can clone this and use this as a module from your other terraform scripts.
+Create Service Accounts, enable API Services and prepare your GCP Project to enable Valtix Controller access your Project and deploy Valtix Security Gateways.
 
 # Requirements
-1. Enable terraform to access your GCP account. Check here for the options https://registry.terraform.io/providers/hashicorp/google/latest/docs (Quick Summary: `gcloud auth application-default login` or if you intend to use a Service Account to run terraform, then create a key for the service account and provide the downloaded file as the value of the `gcp_credentials_file` )
+1. Enable terraform to access your GCP Project. Check here for the options https://registry.terraform.io/providers/hashicorp/google/latest/docs (Quick Summary: `gcloud auth application-default login` or if you intend to use a Service Account to run terraform, then create a key for the service account and provide the downloaded file as the value of the `gcp_credentials_file`, described below)
 1. Permissions/Roles required for the user that runs this terraform:
-    * Logging Admin - roles/loggingg.admin
+    * Logging Admin - roles/logging.admin
     * Pub/Sub Admin - roles/pubsub.admin
     * Security Admin - roles/iam.securityAdmin
     * Service Account Admin - roles/iam.serviceAccountAdmin
@@ -28,7 +28,7 @@ Create Service Accounts, enable API Services and prepare your GCP account to ena
 * `controller_account` - Same value as `client_email`
 * `gateway_account` - Service Account used by the Valtix Gateways
 * `project_id` - Project Id that was provided in the variables
-* `private_key_file_content` - This is the private key for the controller_account (or client_email). This is required during onboarding of the GCP account to the Valtix Controller. The content is sensitive and can be displayed using `terraform output -json | jq -r .private_key_file_content.value`. If you are using the Valtix Dashboard, then copy/paste the contents of private_key. If you are using terraform to onboard this account from another module, then save the value into a file and use this file as the argument for `gcp_credentials_file` in the `valtix_cloud_account` resource. If you are running this from a module, then you can use the output directly
+* `private_key_file_content` - This is the private key for the controller_account/client_email. This is required during onboarding of the GCP account to the Valtix Controller. The content is sensitive and can be displayed using `terraform output -json | jq -r .private_key_file_content.value`. If you are using the Valtix Dashboard, then copy/paste the contents of private_key. If you are using terraform to onboard this account from another module, then save the value into a file and use this file as the argument for `gcp_credentials_file` in the `valtix_cloud_account` resource. If you are running this from a module, then you can use the output directly
 * `storage_bucket` - If bucket location is provided, create a storage bucket and show the name
 
 ## Running as root module
